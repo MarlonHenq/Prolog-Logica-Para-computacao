@@ -1,0 +1,24 @@
+diplomaticMission(X,Y)
+Return: 
+    |X = cpo,
+    |Y = rd
+
+====================
+
+spaceMission(X,Y)
+Return: 
+    |X = bb8,
+    |Y = rd
+    
+    |X = bb8,
+    |Y = cpo
+
+====================
+
+exploreMission(X,Y)
+Return: 
+    |X = cpo,
+    |Y = rd
+    
+    |X = cpo,
+    |Y = bb8
