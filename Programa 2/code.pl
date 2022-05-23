@@ -68,9 +68,9 @@ paiIG(X, Y) :- progenitor(X, Y). %Independente do gênero
 avoM(X, Z) :- progenitor(X, Y), progenitor(Y, Z), gender(X, male). %Avô
 avoF(X, Z) :- progenitor(X, Y), progenitor(Y, Z), gender(X, female). %Avó
 
-irma(X, Y) :- progenitor(Z, X), progenitor(Z, Y), gender(X, female).
-irmao(X, Y) :- progenitor(Z, X), progenitor(Z, Y), gender(X, male).
-irmaoIG(X, Y) :- progenitor(Z, X), progenitor(Z, Y). %Independente do gênero
+irma(X, Y) :- progenitor(Z, X), progenitor(Z, Y), gender(X, female), X\=Y.
+irmao(X, Y) :- progenitor(Z, X), progenitor(Z, Y), gender(X, male), X\=Y.
+irmaoIG(X, Y) :- progenitor(Z, X), progenitor(Z, Y), X\=Y. %Independente do gênero
 
 filho(Y, X) :- progenitor(X, Y), gender(Y, male).
 filha(Y, X) :- progenitor(X, Y), gender(Y, female).
@@ -80,6 +80,3 @@ tia(X, Y) :- progenitor(Z, Y), irmaoIG(Z, X), gender(X, female).
 
 primo(X, Y) :- tio(Z, Y), paiIG(Z, X), gender(X, male).
 prima(X, Y) :- tio(Z, Y), paiIG(Z, X), gender(X, female).
-
-%%PS: Seria nescessário uma verificação em Irma, Irmao e irmaoIG para que eles mesmo não se aparecessem como seus irmãos o que acarrenta em problemas com o tio e tia e depois primo e prima.
-%%Tentei descobrir uma forma de verificar strings iguais mas não consegui. (os operadores =:= só funcionam para comparação de números).
